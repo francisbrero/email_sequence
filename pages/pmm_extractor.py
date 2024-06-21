@@ -1,7 +1,5 @@
 import streamlit as st
-import yaml
-import os
-from utils import load_websites, save_website, generate_website_info
+from utils import load_websites, save_website, generate_website_info, info_box
 
 st.title("PMM Extractor")
 
@@ -42,3 +40,6 @@ else:
 # Ensure the dropdown reflects the selected website
 if 'selected_website' in st.session_state:
     selected_website = st.session_state['selected_website']
+
+# Display info box at the bottom of the sidebar
+info_box()
