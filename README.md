@@ -56,13 +56,20 @@ streamlit_app/
     │   ├── websites/
     │   │   └── website1.yaml
     │   │   └── website2.yaml
+    │   ├── sequences/
+    │   │   └── sequence1.yaml
+    │   │   └── sequence2.yaml
     │   ├── playbooks/
     │   │   └── playbook1.yaml
     │   │   └── playbook2.yaml
     ├── pages/
     │   ├── pmm_extractor.py
-    │   └── page2.py
+    │   └── sequence_generator.py
+    ├── prompts/
+    │   ├── generate_sequence_prompt.txt
+    │   └── pmm_extractor_prompt.txt
     ├── main.py
+    ├── utils.py
     ├── .env
     ├── requirements.txt
     ├── README.md
