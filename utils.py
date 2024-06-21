@@ -154,7 +154,7 @@ def load_sequence(file_path):
 def info_box():
     st.sidebar.info("""
     **Sales Email Sequence Generator**
-    - Author: [Your Name]
-    - Code: [GitHub Repository](https://github.com/your-repo)
+    - Author: Francis Brero
+    - Code: [GitHub Repository](https://github.com/francisbrero/email_sequence)
     - Version: 1.0
     """)
