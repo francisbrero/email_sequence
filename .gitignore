@@ -7,9 +7,9 @@ __pycache__/
 *.so
 
 # data
-data/playbooks/
-data/sequences/
-data/websites/
+data/playbooks/*
+data/sequences/*
+data/websites/*
 *.yaml
 
 # Distribution / packaging
