@@ -1,5 +1,4 @@
 import streamlit as st
-import yaml
 import os
 from utils import load_websites, load_playbooks, save_playbook, generate_sequence, save_sequence, parse_sequence, format_sequence, load_sequence, info_box
 from datetime import datetime
