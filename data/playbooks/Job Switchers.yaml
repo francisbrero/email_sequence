@@ -1,0 +1,58 @@
+conditions: []
+description: 'This playbook surfaces people who were MadKudu champions and have recently
+  moved on to a new company.
+
+  Follow up with them to say hi!!!'
+sequence: "### Step 1\n**Subject:** ** Welcome to Your New Role!\n**Body:** Hello\
+  \ [Name],  \n\nCongrats on the new position at [Company]! As you settle in, I thought\
+  \ a quick intro could be useful. In your previous role, you worked with MadKudu\u2014\
+  our tools likely saved you a few headaches! We\u2019d love to see how we can help\
+  \ at [Company] too.\n\nIs there anything specific about your new role\u2019s challenges\
+  \ or goals where insightful data could make a difference?\n\nCheers,\n\n[Your Name]\n\
+  \n---\n\n### Step 2\n**Subject:** ** Can We Help Streamline [Company]'s Sales?\n\
+  **Body:** Hi [Name],\n\nQuick question: Are your sales and marketing teams at [Company]\
+  \ equipped with predictive analytics for their campaigns?\n\nMadKudu specializes\
+  \ in boosting marketing ROI with data-driven insights. Let\u2019s explore if we\
+  \ can replicate the success you saw previously at your new workplace.\n\nWhat's\
+  \ your availability this week for a quick catch-up?\n\nCheers,\n\n[Your Name]\n\n\
+  ---\n\n### Step 3\n**Subject:** ** Integrations That Could Transform [Company]\n\
+  **Body:** Hello [Name],\n\nAre you enjoying the new role? I'm curious\u2014what\
+  \ CRMs or automation tools are you now working with?\n\nMadKudu seamlessly integrates\
+  \ with various platforms, ensuring that your transition can be as smooth and efficient\
+  \ as possible. Thought this might be useful!\n\nLet me know your thoughts.\n\nCheers,\n\
+  \n[Your Name]\n\n---\n\n### Step 4\n**Subject:** ** Data-Driven Decisions at [Company]\n\
+  **Body:** Hi [Name],\n\nHaving the right data at the right time can be a game-changer,\
+  \ wouldn't you agree? At MadKudu, we thrive on turning complex data into actionable\
+  \ insights.\n\nCould this be something of interest to your team now? How is your\
+  \ current setup handling data analytics?\n\nLooking forward to your feedback.\n\n\
+  Cheers,\n\n[Your Name]\n\n---\n\n### Step 5\n**Subject:** ** Quick Win Opportunities\
+  \ for [Company]\n**Body:** Hello [Name],\n\nI\u2019ve been thinking about ways MadKudu\
+  \ can immediately impact [Company]. By analyzing existing customer data, we can\
+  \ identify quick wins and optimize your conversion strategies.\n\nIs this something\
+  \ that resonates with you currently?\n\nCheers,\n\n[Your Name]\n\n---\n\n### Step\
+  \ 6\n**Subject:** ** Are You Missing Out on Actionable Insights?\n**Body:** Hi [Name],\n\
+  \nJust a quick check-in. Are there ongoing projects where real-time insights could\
+  \ drive better results at [Company]?\n\nMadKudu\u2019s real-time analytics could\
+  \ be the key!\n\nCheers,\n\n[Your Name]\n\n---\n\n### Step 7\n**Subject:** ** Streamlining\
+  \ [Company]'s Marketing Efforts\n**Body:** Hello [Name],\n\nA quick touch base:\
+  \ How is your marketing team managing campaign analysis? At MadKudu, we elevate\
+  \ this process with predictive scoring and segmentation.\n\nCould this boost [Company]'s\
+  \ marketing performance?\n\nCheers,\n\n[Your Name]\n\n---\n\n### Step 8\n**Subject:**\
+  \ ** Time for Big Wins at [Company]?\n**Body:** Hi [Name],\n\nCurious about ways\
+  \ to leverage big data for even bigger gains? Let\u2019s discuss how MadKudu\u2019\
+  s predictive models can set [Company] apart in the competitive SaaS landscape.\n\
+  \nWhat time works for a deeper conversation this week?\n\nCheers,\n\n[Your Name]\n\
+  \n---\n\n### Step 9\n**Subject:** ** Maximizing ROI with MadKudu\n**Body:** Hello\
+  \ [Name],\n\nReviewing our earlier conversations, I saw potential for a substantial\
+  \ uplift in ROI at [Company]. MadKudu's tools could be the leverage you need.\n\n\
+  Can we put a strategy session on your calendar?\n\nCheers,\n\n[Your Name]\n\n---\n\
+  \n### Step 10\n**Subject:** ** Last Call: Transform [Company] With Data Insight\n\
+  **Body:** Hi [Name],\n\nWe\u2019ve touched on several ideas where MadKudu could\
+  \ help [Company] thrive. Are there areas we haven\u2019t covered yet or any final\
+  \ thoughts you\u2019d like to discuss?\n\nLet\u2019s finalize a plan to move forward!\n\
+  \nCheers,\n\n[Your Name]\n\n--- \n\nThis sequence provides a structured approach,\
+  \ keeping the conversations ongoing and gradually pushing towards a commitment,\
+  \ while remembering to probe for new information and insights from the prospect.\n\
+  \n"
+sequence_link: ''
+title: Job Switchers
