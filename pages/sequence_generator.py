@@ -3,7 +3,8 @@ import os
 from utils import load_websites, load_playbooks, save_playbook, generate_sequence, save_sequence, parse_sequence, format_sequence, load_sequence, info_box
 from datetime import datetime
 
-st.title("Sequence Generator")
+st.set_page_config(page_title="Sales Sequence Generator", page_icon=":money_with_wings:", layout="centered", initial_sidebar_state="auto", menu_items=None)
+st.title(":email: Sequence Generator")
 
 # Sidebar with website dropdown
 st.sidebar.title("Websites")

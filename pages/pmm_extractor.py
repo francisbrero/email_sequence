@@ -1,7 +1,8 @@
 import streamlit as st
 from utils import load_websites, save_website, generate_website_info, info_box
 
-st.title("PMM Extractor")
+st.set_page_config(page_title="PMM Extractor", page_icon=":money_with_wings:", layout="centered", initial_sidebar_state="auto", menu_items=None)
+st.title(":computer: PMM Extractor")
 
 # Sidebar with website dropdown
 st.sidebar.title("Websites")

@@ -1,9 +1,8 @@
 import streamlit as st
 from utils import info_box
 
-st.title("Sales Email Sequence Generator")
-
-
+st.set_page_config(page_title="Sales Sequence Generator", page_icon=":money_with_wings:", layout="centered", initial_sidebar_state="auto", menu_items=None)
+st.title(":money_with_wings: Sales Email Sequence Generator")
 
 # Input for OpenAI API key
 api_key = st.text_input("Please enter your OpenAI API key to use this app", type="password")
