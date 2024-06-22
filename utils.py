@@ -13,11 +13,13 @@ def load_websites():
     for filename in os.listdir(data_folder):
         if filename.endswith(".yaml"):
             with open(os.path.join(data_folder, filename), 'r') as file:
-                websites.append(yaml.safe_load(file))
-    return websites
+                website = yaml.safe_load(file)
+                websites.append(website)
+    return sorted(websites, key=lambda x: x.get('last_saved', datetime.min), reverse=True)
 
 def save_website(website):
     data_folder = "data/websites"
+    website['last_saved'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     with open(os.path.join(data_folder, f"{website['name']}.yaml"), 'w') as file:
         yaml.safe_dump(website, file)
 
@@ -55,19 +57,35 @@ def generate_website_info(url):
         max_tokens=1500
     )
     result = response.choices[0].message.content.strip()
+    print(result)
 
     # Parse the result
     lines = result.split('\n')
     website_info = {}
+    personas = []
+    differentiators = []
+    is_personas = False
+    is_differentiators = False
     for line in lines:
         if line.startswith("Name:"):
             website_info["name"] = line.split(":", 1)[1].strip()
         elif line.startswith("Messaging:"):
             website_info["messaging"] = line.split(":", 1)[1].strip()
         elif line.startswith("Personas:"):
-            website_info["personas"] = [persona.strip() for persona in line.split(":", 1)[1].split(",")]
+            is_personas = True
+            is_differentiators = False
         elif line.startswith("Differentiators:"):
-            website_info["differentiators"] = [diff.strip() for diff in line.split(":", 1)[1].split(",")]
+            is_personas = False
+            is_differentiators = True
+        elif is_personas:
+            if line.strip().startswith("-"):
+                personas.append(line.strip().lstrip("-").strip())
+        elif is_differentiators:
+            if line.strip().startswith("-"):
+                differentiators.append(line.strip().lstrip("-").strip())
+
+    website_info["personas"] = personas
+    website_info["differentiators"] = differentiators
 
     return website_info
 

@@ -18,25 +18,25 @@ if selected_website == "Create New Website":
             websites.append(website_info)
             save_website(website_info)
             st.session_state['selected_website'] = website_info['name']
-            st.rerun()  # Refresh the page to show the new website information
+            st.experimental_rerun()  # Refresh the page to show the new website information
         else:
             st.error("Please enter a valid website URL.")
-else:
+elif selected_website:
     website = next(site for site in websites if site['name'] == selected_website)
     name = st.text_input("Name", website['name'])
     messaging = st.text_area("Messaging", website['messaging'])
-    personas = st.text_area("Personas", ", ".join(website['personas']))
-    differentiators = st.text_area("Differentiators", ", ".join(website['differentiators']))
+    personas = st.text_area("Personas", "\n".join(website['personas']))
+    differentiators = st.text_area("Differentiators", "\n".join(website['differentiators']))
 
     if st.button("Save Changes"):
         website['name'] = name
         website['messaging'] = messaging
-        website['personas'] = personas.split(', ')
-        website['differentiators'] = differentiators.split(', ')
+        website['personas'] = personas.split('\n')
+        website['differentiators'] = differentiators.split('\n')
         save_website(website)
         st.success("Website information saved successfully.")
         st.session_state['selected_website'] = name
-        st.rerun()  # Refresh the page to update the dropdown
+        st.experimental_rerun()  # Refresh the page to update the dropdown
 
 # Ensure the dropdown reflects the selected website
 if 'selected_website' in st.session_state:
