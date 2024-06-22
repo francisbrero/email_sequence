@@ -18,7 +18,7 @@ if selected_website == "Create New Website":
             websites.append(website_info)
             save_website(website_info)
             st.session_state['selected_website'] = website_info['name']
-            st.experimental_rerun()  # Refresh the page to show the new website information
+            st.rerun()  # Refresh the page to show the new website information
         else:
             st.error("Please enter a valid website URL.")
 elif selected_website:
@@ -36,7 +36,7 @@ elif selected_website:
         save_website(website)
         st.success("Website information saved successfully.")
         st.session_state['selected_website'] = name
-        st.experimental_rerun()  # Refresh the page to update the dropdown
+        st.rerun()  # Refresh the page to update the dropdown
 
 # Ensure the dropdown reflects the selected website
 if 'selected_website' in st.session_state:

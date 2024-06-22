@@ -57,7 +57,7 @@ def generate_website_info(url):
         max_tokens=1500
     )
     result = response.choices[0].message.content.strip()
-    print(result)
+    # print(result)
 
     # Parse the result
     lines = result.split('\n')
@@ -102,6 +102,7 @@ def generate_sequence(website, playbook):
         playbook_title=playbook['title'],
         playbook_description=playbook['description']
     )
+    print(prompt)
 
     client = OpenAI(
         api_key=st.session_state.get('openai_api_key', os.getenv("OPENAI_API_KEY")),  # use session key if available
