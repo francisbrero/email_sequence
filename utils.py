@@ -162,7 +162,7 @@ def load_sequence(file_path):
     steps = []
     for key, value in sorted(sequence_data['sequence'].items(), key=lambda x: int(x[0].split()[-1])):
         steps.append({
-            'title': key.split()[-1],
+            'title': value['title'],
             'subject': value['subject'],
             'body': value['body']
         })

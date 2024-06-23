@@ -44,7 +44,7 @@ if selected_playbook == "Create New Playbook":
             st.session_state['selected_playbook'] = new_playbook_title
 
             st.success("New playbook created and sequence generated successfully!")
-            st.experimental_rerun()
+            st.rerun()
         else:
             st.error("Please enter both title and description for the new playbook.")
 else:
@@ -84,7 +84,7 @@ else:
             st.session_state['selected_playbook'] = selected_playbook
 
             st.success("Sequence generated successfully!")
-            st.experimental_rerun()
+            st.rerun()
 
     if st.session_state['steps'] and st.session_state['selected_website'] == selected_website and st.session_state['selected_playbook'] == selected_playbook:
         steps = st.session_state['steps']
@@ -97,7 +97,7 @@ else:
                 st.session_state[f"step_{idx+1}_body"] = step['body']
 
         for idx, step in enumerate(steps):
-            with st.expander(f"Step {idx+1}: {step['title']}"):
+            with st.expander(f"Step {step['title']}"):
                 subject_key = f"step_{idx+1}_subject"
                 body_key = f"step_{idx+1}_body"
                 st.text_input("Subject", st.session_state[subject_key], key=subject_key)
