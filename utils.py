@@ -13,9 +13,8 @@ def load_websites():
     for filename in os.listdir(data_folder):
         if filename.endswith(".yaml"):
             with open(os.path.join(data_folder, filename), 'r') as file:
-                website = yaml.safe_load(file)
-                websites.append(website)
-    return sorted(websites, key=lambda x: x.get('last_saved', datetime.min), reverse=True)
+                websites.append(yaml.safe_load(file))
+    return websites
 
 def save_website(website):
     data_folder = "data/websites"
@@ -57,7 +56,7 @@ def generate_website_info(url):
         max_tokens=1500
     )
     result = response.choices[0].message.content.strip()
-    # print(result)
+    print(result)
 
     # Parse the result
     lines = result.split('\n')
@@ -102,7 +101,6 @@ def generate_sequence(website, playbook):
         playbook_title=playbook['title'],
         playbook_description=playbook['description']
     )
-    print(prompt)
 
     client = OpenAI(
         api_key=st.session_state.get('openai_api_key', os.getenv("OPENAI_API_KEY")),  # use session key if available
