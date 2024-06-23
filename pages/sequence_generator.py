@@ -1,10 +1,19 @@
 import streamlit as st
 import os
-from utils import load_websites, load_playbooks, generate_sequence, save_sequence, parse_sequence, load_sequence, save_playbook, info_box
+from utils import load_websites, load_playbooks, generate_sequence, save_sequence, parse_sequence, load_sequence, save_playbook, log_event, log_prompt_response, info_box
 from datetime import datetime
 
 st.set_page_config(page_title="Sales Sequence Generator", page_icon=":money_with_wings:", layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.title(":email: Sequence Generator")
+
+# Input for user email and OpenAI API key if not already in session state
+if 'user_email' not in st.session_state or 'openai_api_key' not in st.session_state or not st.session_state['user_email'] or not st.session_state['openai_api_key']:
+    st.session_state['user_email'] = st.text_input("Please enter your email to log your actions:", key="user_email")
+    st.session_state['openai_api_key'] = st.text_input("Please enter your OpenAI API key to use this app:", type="password", key="openai_api_key")
+    st.stop()
+
+user_email = st.session_state['user_email']
+openai_api_key = st.session_state['openai_api_key']
 
 # Sidebar with website dropdown
 st.sidebar.title("Websites")
@@ -15,6 +24,7 @@ selected_website = st.sidebar.selectbox("Select Website", website_names)
 # Load selected website information
 if selected_website:
     website = next(site for site in websites if site['name'] == selected_website)
+    log_event(user_email, "Select Website", f"Selected website: {selected_website}")
 
 # Sidebar with playbook dropdown
 st.sidebar.title("Playbooks")
@@ -35,9 +45,13 @@ if selected_playbook == "Create New Playbook":
                 'conditions': []  # Ignored for now
             }
             save_playbook(new_playbook)
+            log_event(user_email, "Create Playbook", f"Created new playbook: {new_playbook_title}")
 
             # Generate the sequence using OpenAI
+            prompt = f"Website Name: {website['name']}\nMessaging: {website['messaging']}\nPersonas: {', '.join(website['personas'])}\nDifferentiators: {', '.join(website['differentiators'])}\nPlaybook Title: {new_playbook_title}\nPlaybook Description: {new_playbook_description}"
             sequence = generate_sequence(website, new_playbook)
+            log_prompt_response(user_email, prompt, sequence)
+            
             steps = parse_sequence(sequence)
             st.session_state['steps'] = steps
             st.session_state['selected_website'] = website['name']
@@ -64,26 +78,35 @@ else:
             st.session_state['steps'] = load_sequence(sequence_file_path)
             st.session_state['selected_website'] = selected_website
             st.session_state['selected_playbook'] = selected_playbook
+            log_event(user_email, "Load Sequence", f"Loaded sequence for website: {selected_website}, playbook: {selected_playbook}")
 
         if st.button("Overwrite Sequence"):
             # Generate the sequence using OpenAI
+            prompt = f"Website Name: {website['name']}\nMessaging: {website['messaging']}\nPersonas: {', '.join(website['personas'])}\nDifferentiators: {', '.join(website['differentiators'])}\nPlaybook Title: {playbook['title']}\nPlaybook Description: {playbook['description']}"
             sequence = generate_sequence(website, playbook)
+            log_prompt_response(user_email, prompt, sequence)
+
             steps = parse_sequence(sequence)
             st.session_state['steps'] = steps
             st.session_state['selected_website'] = selected_website
             st.session_state['selected_playbook'] = selected_playbook
 
             st.success("Sequence overwritten successfully!")
+            log_event(user_email, "Overwrite Sequence", f"Overwritten sequence for website: {selected_website}, playbook: {selected_playbook}")
     else:
         if st.button("Generate Sequence"):
             # Generate the sequence using OpenAI
+            prompt = f"Website Name: {website['name']}\nMessaging: {website['messaging']}\nPersonas: {', '.join(website['personas'])}\nDifferentiators: {', '.join(website['differentiators'])}\nPlaybook Title: {playbook['title']}\nPlaybook Description: {playbook['description']}"
             sequence = generate_sequence(website, playbook)
+            log_prompt_response(user_email, prompt, sequence)
+
             steps = parse_sequence(sequence)
             st.session_state['steps'] = steps
             st.session_state['selected_website'] = selected_website
             st.session_state['selected_playbook'] = selected_playbook
 
             st.success("Sequence generated successfully!")
+            log_event(user_email, "Generate Sequence", f"Generated sequence for website: {selected_website}, playbook: {selected_playbook}")
             st.rerun()
 
     if st.session_state['steps'] and st.session_state['selected_website'] == selected_website and st.session_state['selected_playbook'] == selected_playbook:
@@ -123,6 +146,7 @@ else:
             save_sequence(sequence_data)
 
             st.success("Sequence saved successfully!")
+            log_event(user_email, "Save Sequence", f"Saved sequence for website: {selected_website}, playbook: {selected_playbook}")
     else:
         st.session_state.pop('steps', None)
 

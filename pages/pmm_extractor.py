@@ -1,8 +1,14 @@
 import streamlit as st
 from utils import load_websites, save_website, generate_website_info, info_box
 
-st.set_page_config(page_title="PMM Extractor", page_icon=":money_with_wings:", layout="centered", initial_sidebar_state="auto", menu_items=None)
+st.set_page_config(page_title="PMM Extractor", page_icon=":computer:", layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.title(":computer: PMM Extractor")
+
+# Input for user email and OpenAI API key if not already in session state
+if 'user_email' not in st.session_state or 'openai_api_key' not in st.session_state or not st.session_state['user_email'] or not st.session_state['openai_api_key']:
+    st.session_state['user_email'] = st.text_input("Please enter your email to log your actions:", key="user_email")
+    st.session_state['openai_api_key'] = st.text_input("Please enter your OpenAI API key to use this app:", type="password", key="openai_api_key")
+    st.stop()
 
 # Sidebar with website dropdown
 st.sidebar.title("Websites")
@@ -21,18 +27,18 @@ if selected_website == "Create New Website":
             st.rerun()  # Refresh the page to show the new website information
         else:
             st.error("Please enter a valid website URL.")
-elif selected_website:
+else:
     website = next(site for site in websites if site['name'] == selected_website)
     name = st.text_input("Name", website['name'])
     messaging = st.text_area("Messaging", website['messaging'])
-    personas = st.text_area("Personas", "\n".join(website['personas']))
-    differentiators = st.text_area("Differentiators", "\n".join(website['differentiators']))
+    personas = st.text_area("Personas", ", ".join(website['personas']))
+    differentiators = st.text_area("Differentiators", ", ".join(website['differentiators']))
 
     if st.button("Save Changes"):
         website['name'] = name
         website['messaging'] = messaging
-        website['personas'] = personas.split('\n')
-        website['differentiators'] = differentiators.split('\n')
+        website['personas'] = personas.split(', ')
+        website['differentiators'] = differentiators.split(', ')
         save_website(website)
         st.success("Website information saved successfully.")
         st.session_state['selected_website'] = name

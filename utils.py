@@ -168,10 +168,32 @@ def load_sequence(file_path):
         })
     return steps
 
+def log_event(user_email, event_type, event_details):
+    log_entry = {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "user_email": user_email,
+        "event_type": event_type,
+        "event_details": event_details
+    }
+    log_file_path = os.path.join("data/logs", f"{user_email}_logs.yaml")
+    with open(log_file_path, 'a') as file:
+        yaml.dump([log_entry], file)
+
+def log_prompt_response(user_email, prompt, response):
+    log_entry = {
+        "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "user_email": user_email,
+        "prompt": prompt,
+        "response": response
+    }
+    log_file_path = os.path.join("data/logs", f"{user_email}_prompts_responses.yaml")
+    with open(log_file_path, 'a') as file:
+        yaml.dump([log_entry], file)
+
 def info_box():
     st.sidebar.info("""
     **Sales Email Sequence Generator**
     - Author: Francis Brero
     - Code: [GitHub Repository](https://github.com/francisbrero/email_sequence)
-    - Version: 1.6.22
+    - Version: 1.6.22.2
     """)
