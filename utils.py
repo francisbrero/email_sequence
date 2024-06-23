@@ -173,5 +173,5 @@ def info_box():
     **Sales Email Sequence Generator**
     - Author: Francis Brero
     - Code: [GitHub Repository](https://github.com/francisbrero/email_sequence)
-    - Version: 1.0
+    - Version: 1.6.22
     """)
