@@ -6,20 +6,8 @@ from datetime import datetime
 st.set_page_config(page_title="Sales Sequence Generator", page_icon=":money_with_wings:", layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.title(":email: Sequence Generator")
 
-# # Input for user email and OpenAI API key
-# if 'user_email' not in st.session_state:
-#     st.session_state['user_email'] = ''
-# if 'openai_api_key' not in st.session_state:
-#     st.session_state['openai_api_key'] = ''
-
-# # Input for user email and OpenAI API key if not already in session state
-# if 'user_email' not in st.session_state or 'openai_api_key' not in st.session_state or not st.session_state['user_email'] or not st.session_state['openai_api_key']:
-#     st.session_state['user_email'] = st.text_input("Please enter your email to log your actions:", key="user_email")
-#     st.session_state['openai_api_key'] = st.text_input("Please enter your OpenAI API key to use this app:", type="password", key="openai_api_key")
-#     st.stop()
 
 user_email = st.session_state['user_email']
-openai_api_key = st.session_state['openai_api_key']
 
 # Sidebar with website dropdown
 st.sidebar.title("Websites")

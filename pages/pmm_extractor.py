@@ -4,22 +4,6 @@ from utils import load_websites, save_website, generate_website_info, info_box
 st.set_page_config(page_title="PMM Extractor", page_icon=":computer:", layout="centered", initial_sidebar_state="auto", menu_items=None)
 st.title(":computer: PMM Extractor")
 
-# # Input for user email and OpenAI API key
-# if 'user_email' not in st.session_state  or st.session_state['user_email'] == '':
-#     st.session_state['user_email'] = st.text_input("Please enter your email to log your actions:", key="user_email")
-# else:
-#     st.session_state['user_email'] = st.session_state['user_email']
-# if 'openai_api_key' not in st.session_state or st.session_state['openai_api_key'] == '':
-#     st.session_state['openai_api_key'] = st.text_input("Please enter your OpenAI API key to use this app:", type="password", key="openai_api_key")
-# else:
-#     st.session_state['openai_api_key'] = st.session_state['openai_api_key']
-
-# # Input for user email and OpenAI API key if not already in session state
-# if 'user_email' not in st.session_state or 'openai_api_key' not in st.session_state or not st.session_state['user_email'] or not st.session_state['openai_api_key']:
-#     st.session_state['user_email'] = st.text_input("Please enter your email to log your actions:", key="user_email")
-#     st.session_state['openai_api_key'] = st.text_input("Please enter your OpenAI API key to use this app:", type="password", key="openai_api_key")
-#     st.stop()
-
 # Sidebar with website dropdown
 st.sidebar.title("Websites")
 websites = load_websites()
