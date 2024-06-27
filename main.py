@@ -7,14 +7,11 @@ st.title(":money_with_wings: Sales Email Sequence Generator")
 # Input for user email and OpenAI API key
 if 'user_email' not in st.session_state:
     st.session_state['user_email'] = ''
-if 'openai_api_key' not in st.session_state:
-    st.session_state['openai_api_key'] = ''
 
 st.session_state['user_email'] = st.text_input("Please enter your email to log your actions:", value=st.session_state['user_email'])
-st.session_state['openai_api_key'] = st.text_input("Please enter your OpenAI API key to use this app:", type="password", value=st.session_state['openai_api_key'])
 
-if not st.session_state['user_email'] or not st.session_state['openai_api_key']:
-    st.warning("Please enter both your email and OpenAI API key to use the application.")
+if not st.session_state['user_email']:
+    st.warning("Please enter both your email to use the application.")
     st.stop()
 
 

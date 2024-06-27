@@ -44,7 +44,7 @@ def generate_website_info(url):
     prompt = prompt_template.format(url=url)
 
     client = OpenAI(
-        api_key=st.session_state.get('openai_api_key', os.getenv("OPENAI_API_KEY")),  # use session key if available
+        api_key=st.session_state.get(os.getenv("OPENAI_API_KEY")), 
     )
 
     response = client.chat.completions.create(
